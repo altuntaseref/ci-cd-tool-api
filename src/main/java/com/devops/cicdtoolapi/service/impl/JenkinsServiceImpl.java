@@ -1,4 +1,4 @@
-package com.devops.cicdtoolapi.service;
+package com.devops.cicdtoolapi.service.impl;
 
 import com.devops.cicdtoolapi.client.JenkinsHttpClient;
 import com.devops.cicdtoolapi.config.JenkinsConfig;
@@ -9,7 +9,7 @@ import com.devops.cicdtoolapi.exception.JenkinsResourceNotFoundException;
 import com.devops.cicdtoolapi.exception.JenkinsServiceException;
 import com.devops.cicdtoolapi.model.BuildInfo;
 import com.devops.cicdtoolapi.constants.JenkinsConstants;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.devops.cicdtoolapi.service.JenkinsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
