@@ -15,6 +15,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -49,10 +50,13 @@ public class ApplicationHealthServiceImpl implements ApplicationHealthService {
                 // Başarılı yanıt (200 OK) genellikle "UP" durumunu gösterir
                 ActuatorHealthResponse healthResponse = response.getBody();
                 logger.info("Application at {} is {}", applicationUrl, healthResponse.getStatus());
+                Map<String, Object> getMapComponents = new HashMap<>();
+
+                getMapComponents.put("URL",applicationUrl);
                 return new HealthCheckResult(
                         healthResponse.getStatus() != null ? healthResponse.getStatus().toUpperCase() : "UNKNOWN",
                         "Health check successful.",
-                        healthResponse.getComponents() // Detayları da alalım (yapılandırıldıysa)
+                        getMapComponents // Detayları da alalım (yapılandırıldıysa)
                 );
             } else if (response.getStatusCode().is5xxServerError()) {
                  // 5xx (örn: 503 Service Unavailable) genellikle "DOWN" durumunu gösterir

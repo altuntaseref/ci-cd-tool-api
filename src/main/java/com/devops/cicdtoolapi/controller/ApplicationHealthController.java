@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/app-health") // Yeni API yolu
+@RequestMapping("/api/v1/app-health")
 public class ApplicationHealthController {
 
     private static final Logger logger = LoggerFactory.getLogger(ApplicationHealthController.class);
@@ -58,6 +58,7 @@ public class ApplicationHealthController {
         // 2. Check the health using the retrieved URL
         logger.info("Checking health for application '{}' using URL: {}", appName, urlResult.getAccessUrl());
         HealthCheckResult healthResult = healthService.checkApplicationHealth(urlResult.getAccessUrl());
+
 
         // Yanıtı oluştur
         HttpStatus responseStatus;
